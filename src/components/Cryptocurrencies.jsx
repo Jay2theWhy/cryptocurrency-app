@@ -6,8 +6,9 @@ import { Card, Row, Col, Input } from 'antd';
 // import redux store
 import { useGetCryptosQuery } from '../services/cryptoApi';
 
-const Cryptocurrencies = () => {
-  const { data: cryptosList, isFetching } = useGetCryptosQuery();
+const Cryptocurrencies = ({ simplified }) => {
+  const count = simplified ? 10 : 100;
+  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
 
   console.log(cryptos)
