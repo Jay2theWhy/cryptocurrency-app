@@ -1,4 +1,5 @@
 import React from 'react'
+import {Chart as ChartJS} from 'chart.js/auto'
 import { Line } from 'react-chartjs-2';
 import { Col, Row, Typography } from 'antd';
 
@@ -8,9 +9,9 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     //create arrays to store coin price
     const coinPrice = [];
     const coinTimestamp = [];
-    for (let i=0; i < coinHistory?.data?.history?.length; i++) {
-        coinPrice.push(coinHistory.data.history[i].price)
-        coinTimestamp.push(new Date(coinHistory.data.history[i].timestamp).toLocaleDateString());
+    for (let i=0; i < coinHistory?.data?.history?.length; i+=1) {
+        coinPrice.push(coinHistory?.data?.history[i].price)
+        coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString());
     }
 
     // data for the chart
@@ -40,6 +41,8 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         }
     }
 
+    console.log(coinHistory)
+
     return (
         <>
             <Row className="chart-header">
@@ -49,7 +52,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
                     <Title level={5} className="current-price">Current {coinName} Price: $ {currentPrice}</Title>
                 </Col>
             </Row>
-            <Line data={data} options={options} />
+            <Line data={data}/>
         </>
     )
 }
