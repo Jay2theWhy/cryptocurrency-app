@@ -10,8 +10,8 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     const coinPrice = [];
     const coinTimestamp = [];
     for (let i=0; i < coinHistory?.data?.history?.length; i+=1) {
-        coinPrice.push(coinHistory?.data?.history[i].price)
-        coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp * 1000).toLocaleDateString());
+        coinPrice.unshift(coinHistory?.data?.history[i].price)
+        coinTimestamp.unshift(new Date(coinHistory?.data?.history[i].timestamp * 1000).toLocaleDateString());
     }
 
     // data for the chart
@@ -41,7 +41,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         }
     }
 
-    console.log(data)
+    console.log(coinTimestamp)
 
     return (
         <>
