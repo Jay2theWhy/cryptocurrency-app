@@ -41,8 +41,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         }
     }
 
-    console.log(coinTimestamp)
-
     return (
         <>
             <Row className="chart-header">
